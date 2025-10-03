@@ -1,26 +1,54 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        '''
-        У нас есть только 3 вида открывающих скобок
-        Хочется обойтись без цикла и просто наебашить if'ы но это пиздец тяжело перебором хуярить
-        Есть идея использовать цикл while почему-то, хз почему просто наитие
-        Можно сделать 1 переменную и смотреть положительная она или отрицательная (оптимизация, чтобы не делать 6 переменных, а сделать 3 под каждый тип скобки
-        '''
-
-        opened=0
-        closed=0
-        for i in s:
-            if i == '(':
-                opened+=1
-
-            elif i== ')':
-                closed+=1
-                if closed > opened:
+        brackets=0
+        curly=0
+        square=0
+        check=0
+        if s[0] == ')' or s[0] == '}' or s[0] == ']':
+            return False
+        else:
+            for i in s:
+                if i == ')' and (s[s.index(i)-1]=='{' or s[s.index(i)-1] =='['):
+                    check +=1
+                    #print(s[s.index(i)+1])
                     return False
 
+                elif i == '}' and (s[s.index(i)-1]=='(' or s[s.index(i)-1] =='['):
+                    check += 1
+                    #print(s[s.index(i) + 1])
+                    return False
 
-        if opened > closed:
-            return False
-        return True
+                elif i == ']' and (s[s.index(i)-1]=='{' or s[s.index(i)-1] =='('):
+                    check += 1
+                    #print(s[s.index(i) + 1])
+                    return False
+
+                elif i == '(':
+                    brackets+=1
+
+                elif i== ')' :
+                    brackets-=1
+                    if brackets < 0:
+                        return False
+
+                elif i== '{':
+                    curly+=1
+
+                elif i== '}':
+                    curly-=1
+                    if curly < 0:
+                        return False
+
+                elif i== '[':
+                    square+=1
+
+                else:
+                    square-=1
+                    if square < 0:
+                        return False
+
+            if brackets != 0 or curly != 0 or square != 0 or check != 0:
+                return False
+            return True
 result=Solution().isValid('(())()')
 print(result)
