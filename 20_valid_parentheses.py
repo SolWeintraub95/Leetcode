@@ -50,5 +50,6 @@ class Solution:
             if brackets != 0 or curly != 0 or square != 0 or check != 0:
                 return False
             return True
+
 result=Solution().isValid('(())()')
 print(result)
