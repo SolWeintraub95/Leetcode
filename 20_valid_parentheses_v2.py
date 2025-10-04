@@ -23,10 +23,7 @@ class Solution:
             else:
                 return False
 
-        if my_list:
-            return False
-        else:
-            return True
+        return not my_list
 
-result = Solution().isValid(')')
+result = Solution().isValid('()[]')
 print(result)
