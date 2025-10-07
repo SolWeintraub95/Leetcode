@@ -1,13 +1,6 @@
 class Solution:
-    def max(self, nums: list[int]) -> int:
-        max = nums[0]
-        for i in range(len(nums)):
-            if nums[i] > max:
-                max = nums[i]
-        return max
-
     def thirdMax(self, nums: list[int]) -> int:
-        max=max2=max3 = nums[0]
+        max=max2=max3 = -2**31-1
         min = nums[0]
         #Запускаем счётчик по количеству элементов в листе и стандартное сравнение что каждый элемент массива меньше max
         for i in range(len(nums)):
@@ -35,5 +28,5 @@ class Solution:
         if len(nums)<=2 or min == max2 or min==max:
             return max
         return max3
-result = Solution().thirdMax([1,1,2])
+result = Solution().thirdMax([3,2,1])
 print(result)
