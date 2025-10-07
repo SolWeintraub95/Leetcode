@@ -18,10 +18,11 @@ class Solution:
                 d[ch]-= 1
 
         #Условие, где если все значения в словаре равны 0, т.е. число встреч букв одинаково в обоих строках, то возвращаем true, иначе false
-        return all(value == 0 for value in d.values())
 
+        for value in d.values():
+            if value != 0:
+                return False
+        return True
 
-
-
-result = Solution().isAnagram('rat','car')
+result = Solution().isAnagram('rat','cart')
 print(result)
