@@ -6,12 +6,11 @@ class Solution:
             return True
         while j < len(t):
             if s[i] == t[j]:
-                j+=1
                 i+=1
                 if i == len(s):
                     return True
-            else:
-                j+=1
+
+            j+=1
         return False
 
 result = Solution().isSubsequence('b', 'c')

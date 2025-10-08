@@ -7,7 +7,5 @@ class Solution:
                 if a+b==target:
                     return [i,j]
 
-
-
-result=Solution().twoSum([3,2,4],6)
+result=Solution().twoSum([3,2,4],7)
 print(result)
