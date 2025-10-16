@@ -1,14 +1,14 @@
 class Solution:
-    def sortedArrayBubble(self, nums: list[int]) -> list[int]:
-        #Нужно два цикла, первый будет переводить индексы ближе к 0 и сравнивать по новой, а второй будет проходиться по "парам" и сравнивать уже их
+	def sortedArrayBubble(self, nums: list[int]) -> list[int]:
+		for i in range(len(nums)-1):
+			isSorted = True
+			for k in range(len(nums)-i-1):
+				if nums[k] > nums[k+1]:
+					nums[k], nums[k+1] = nums[k+1], nums[k]
+					isSorted = False
+			if isSorted:
+				break
+		return nums
 
-
-
-
-
-
-
-
-
-result = Solution().sortedArrayBubble([1, 201, 3, 3, 21])
+result = Solution().sortedArrayBubble([3, 2, 1, 200, 4, -1, 0])
 print(result)
