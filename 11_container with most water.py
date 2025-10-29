@@ -12,13 +12,28 @@ class Solution:
 
         # втупую можно просто перемножить каждые 2 высоты равные на разность между ними,
         # осталось присвоить максимум и второй максимум
-        mh1 = 0
-        mh2 = 0
+        # mh1 = 0
+        # mh2 = 0
+        # p = 0
+        # for i in range(len(height)):
+            # if height[i] > mh1:
+                # mh1 = height[i]
+            # if height[i] > mh2 and height[i] != mh1
+
+        # для более простого решения нужно взять миниммум(функция min к списку)
+        # иду полным перебором, умножаю digits[i] на разницу между k и i
         p = 0
         for i in range(len(height)):
-            if height[i] > mh1:
-                mh1 = height[i]
-            if height[i] > mh2 and height[i] != mh1
+            for k in range(i+1, len(height)):
+                #print(f"i: {i} k: {k} h: {height[i]} p: {height[i] * (k-i)}")
+                curr = min(height[k],height[i]) * (k-i)
+                if curr > p:
+                    p = curr
+        return p
+
+
+
+
 
 result = Solution().maxArea([1,8,6,2,5,4,8,3,7])
 print(result)
